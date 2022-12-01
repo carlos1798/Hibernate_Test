@@ -12,8 +12,10 @@ public class App {
   static SessionFactory sessionFactory;
 
   protected void setUp() throws Exception {
-    // like discussed with regards to SessionFactory, an EntityManagerFactory is set up once for an application
-    // 		IMPORTANT: notice how the name here matches the name we gave the persistence-unit in persistence.xml!
+    // like discussed with regards to SessionFactory, an EntityManagerFactory is set
+    // up once for an application
+    // IMPORTANT: notice how the name here matches the name we gave the
+    // persistence-unit in persistence.xml!
     entityManagerFactory = Persistence.createEntityManagerFactory("empleados");
   }
 
@@ -26,19 +28,26 @@ public class App {
    */
   public static void main(String[] args) {
     entityManagerFactory = Persistence.createEntityManagerFactory("empleados");
+   
 
-    EntityManager entityManager = entityManagerFactory.createEntityManager();
-    entityManager.getTransaction().begin();
-    List<Employee> result = entityManager
-      .createQuery("from employee", Employee.class)
-      .getResultList();
-    for (Employee empleado : result) {
-      System.out.println(
-        "Empleado (" +
-        empleado.getFirst_name() +
-        ") : " +
-        empleado.getBirth_date()
-      );
+      EntityManager entityManager = entityManagerFactory.createEntityManager();
+      entityManager.getTransaction().begin();
+      List<Employee> result = entityManager
+          .createQuery("from Employee", Employee.class)
+          .getResultList();
+          
+          for (Employee empleado : result) {
+     
+            System.out.println(
+       
+          "Empleado (" +
+              empleado.getFirst_name() +
+              ") : " +
+              empleado.getBirth_date());
     }
+
+   
+    
+
   }
 }
